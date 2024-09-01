@@ -276,33 +276,72 @@ Arrow functions cannot be used as constructors, and attempting to use new with a
 
     console.log(multiplyDouble(2));
     console.log(multiplyTriple(3));
+    console.log(higherOrder(25)(5))
     ```
 
 
 
-12. ##### *What is Function❓*
-    ✔️ *Is a group of reusable Instructions..*
-13. ##### *What is Function❓*
-    ✔️ *Is a group of reusable Instructions..*
-14. ##### *What is Function❓*
-    ✔️ *Is a group of reusable Instructions..*
-15. ##### *What is Function❓*
-    ✔️ *Is a group of reusable Instructions..*
-16. ##### *What is Function❓*
-    ✔️ *Is a group of reusable Instructions..*
-17. ##### *What is Function❓*
-    ✔️ *Is a group of reusable Instructions..*
-18. ##### *What is Function❓*
-    ✔️ *Is a group of reusable Instructions..*
-19. ##### *What is Function❓*
-    ✔️ *Is a group of reusable Instructions..*
-20. ##### *What is Function❓*
-    ✔️ *Is a group of reusable Instructions..*
-21. ##### *What is Function❓*
-    ✔️ *Is a group of reusable Instructions..*
-22. ##### *What is Function❓*
-    ✔️ *Is a group of reusable Instructions..*
-23. ##### *What is Function❓*
-    ✔️ *Is a group of reusable Instructions..*
-24. ##### *What is Function❓*
-    ✔️ *Is a group of reusable Instructions..*
+12. ##### *What is IIFE (Immediately Invoked Function Expression) Function❓*
+    ✔️ _IIFE (Immediately Invoked Function Expression) is a function that is executed immediately after it is defined._
+
+    _Grouping syntax (wrapping the function in parentheses) is used to ensure the function is treated as an expression and invoked immediately._
+    _IIFE is commonly used to create a private scope, avoid global variable pollution, encapsulate modules, run initialization code, and prevent conflicts in scripts._
+    ***Example of IIFE***
+    ```javascript
+    const shoppingCart = (function(){
+    let cartItems = [];
+
+    function getTotal(){
+        return (
+            cartItems.reduce((subTotal,currentItem)=> subTotal+currentItem.price,0)
+        )
+    }
+
+    return {
+        add:function(items){
+            cartItems.push(items)
+        },
+        total:function(){
+            return getTotal();
+        },
+        items:function(){
+            return [...cartItems]
+        },
+    }
+    })();
+
+
+
+    shoppingCart.add({name:'USBhub', price:150});
+    shoppingCart.add({name:'Mouse', price:450});
+
+
+    console.log(shoppingCart.items());
+    console.log(shoppingCart.total());
+    ```
+    ***Example-02***
+    ```javascript
+    (function(){
+        console.log("Hello World)
+    })()
+    ```
+13. ##### *What is recursive Function❓*
+    ✔️  _Recursion is a technique where a function calls itself to solve a problem._
+        ✔️ _A base case is necessary to stop the recursion and prevent infinite loops._
+
+    ***Example***
+
+    ```javascript
+        function factorial(count){
+            <!-- Base case condition to prevent infinity Loop -->
+        if(count === 0){
+        console.log("Limit Exceed");
+        return 1;
+            <!-- Cause it can't be 0 (Zero) -->
+        
+        }
+        const result = count * factorial(count - 1);
+        return result
+        }
+        console.log(factorial(3));
+```
