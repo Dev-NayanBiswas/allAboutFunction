@@ -45,7 +45,7 @@
 
 8. ##### *Difference between arrow and regular Function❓*
     ✔️ Arrow functions and regular functions in JavaScript have several key differences in terms of syntax, behavior, and usage. Here's a breakdown of the main differences:
-1. **Syntax:**
+#### 1. **Syntax:**
 
 **Regular Function:**
 
@@ -68,10 +68,10 @@
 Arrow functions are more concise, especially when the function body is simple. If the function has a single expression, it can omit the return keyword and the curly braces {}.
 
 
-2. ***this Context:***
+#### 2. ***this Context:***
 
-    ***Regular Function:***
-        The value of this inside a regular function depends on how the function is called. It can change dynamically based on the calling context.
+***Regular Function:***
+The value of this inside a regular function depends on how the function is called. It can change dynamically based on the calling context.
 
 ```    javascript
 
@@ -105,10 +105,10 @@ Arrow functions do not have their own this context. Instead, they inherit this f
 
 In the example above, this.name is undefined because this in the arrow function refers to the global object (or undefined in strict mode), not the person object.
 
-***1. arguments Object:***
+#### 1. arguments Object:
 
-    Regular Function:
-        Regular functions have access to the arguments object, which is an array-like object containing all the arguments passed to the function.
+***Regular Function:***
+Regular functions have access to the arguments object, which is an array-like object containing all the arguments passed to the function.
 
  ```   javascript
 
@@ -130,9 +130,10 @@ Arrow functions do not have their own arguments object. If you need access to ar
     console.log(sum(1, 2, 3)); // Output: 6
 ```
 
-***4. new Keyword:***
+#### ***4. new Keyword:***
 
-Regular Function:
+***Regular Function:***
+
 Regular functions can be used as constructors with the new keyword to create instances of an object.
 
 ```javascript
@@ -170,12 +171,115 @@ Arrow functions cannot be used as constructors, and attempting to use new with a
         _Arrow functions are ideal for short functions, especially in callbacks (e.g., in array methods like map, filter, etc.), and when you want to maintain the this context from the surrounding scope._
 
 
-9. ##### *What is Function❓*
-    ✔️ *Is a group of reusable Instructions..*
-10. ##### *What is Function❓*
-    ✔️ *Is a group of reusable Instructions..*
-11. ##### *What is Function❓*
-    ✔️ *Is a group of reusable Instructions..*
+9. ##### *nested Function❓*
+    ✔️ *In a nested function child function can access the value of parent functions parameter but parent can't access child's parameters or declared variables ..*
+    ```javascript
+        function parent(a){
+    console.log("Parent function Executed"); // Parent function Executed
+        let b = 25; 
+    function child(){
+            console.log("Child function Executed");
+            let c = 10;
+            return (a * b * c)
+    }
+
+    try{
+        console.log("a + b =",a + b); //a + b = 35
+        console.log("a + b + c =", a + b + c); //c is not defined
+    }catch(error){
+        console.log(error.message);
+    }
+    finally{
+        return child;
+        }
+    }
+
+
+    const result = parent(10);
+
+    console.log(result()) //2500
+
+    ```
+10. ##### *What is CallBack Function❓*
+    ✔️ Callback functions are functions passed as arguments to other functions and executed after some operation is completed.
+    1. _They can be used for synchronous or asynchronous tasks._
+    2. _Common use cases include event handling, asynchronous operations, and array methods._
+    ```javascript
+    <!-- As Event Listener -->
+        document.getElementById("btn").addEventListener("click", function() {
+    console.log("I'm clicked!");
+    });
+    ```
+    ```javascript
+    <!-- As Array Methods -->
+
+        const numbers = [1, 2, 3, 4, 5];
+
+        const doubled = numbers.map(function(number) {
+            return number * 2;
+        });
+
+        console.log(doubled);
+    ```
+    3. _Although powerful, callbacks can lead to complex code structures like "callback hell," which can be addressed with Promises or async/await..._
+    ```javascript
+        setTimeout(function() {
+            console.log("First task");
+                setTimeout(function() {
+                    console.log("Second task");
+                    setTimeout(function() {
+                        console.log("Third task");
+                }, 1000);
+            }, 1000);
+        }, 1000);
+    ```
+11. ##### *What is Higher order Function❓*
+    ✔️ *_Higher order function is either taking one or more functions as parameter or returning a function as results._*
+    
+    ###### _Example-01_
+    
+    _This **findEvenNumber** is an example of taking one function as parameter to get the even numbers from it's input parameter **arr**, which is an Array_ 
+    ``` javascript
+    function findEvenNumbers(arr, callBackFun){
+    let evenArr = [];
+    let oddArr = [];
+    for(let ar of arr){
+        if(callBackFun(ar)){
+            evenArr.push(ar);
+        }
+        else{
+            oddArr.push(ar)
+        }
+    }
+    console.log(oddArr);
+    return evenArr;
+    }
+    const numbers = [12, 54, 55, 7, 6, 23, 84, 14];
+    const even = (param)=>{
+        return (
+            param % 2 === 0
+        )
+    }
+        console.log(findEvenNumbers(numbers,even));
+    ```
+
+    ###### *Example-02*
+
+    ```javascript
+    function higherOrder(number){
+        return function multiplier(times){
+            return number * times;
+        }
+    }
+    let multiplyDouble = higherOrder(20);
+    let multiplyTriple = higherOrder(30);
+
+    console.log(multiplyDouble(2));
+    console.log(multiplyTriple(3));
+    ```
+
+
+
 12. ##### *What is Function❓*
     ✔️ *Is a group of reusable Instructions..*
 13. ##### *What is Function❓*
